@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+         <link rel = 'stylesheet' href = 'style.css'>
+         <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img src = 'assets/office_desk.jpg' alt = 'office desk' style="position:relative">
+
+    <div class="image-container">
+        <img src = 'assets/5 min.png' alt = 'office desk' onclick='startTimer(0.1)' style="position:absolute; top:142px; left:180px; width:180px; height: auto;">
+        <img src = 'assets/15 min.png' alt = 'office desk' onclick='startTimer(15)' style="position:absolute; top:250px; left:380px; width:180px; height: auto;">
+        <img src = 'assets/20 min.png' alt = 'office desk' onclick='startTimer(20)'style="position:absolute; top:20px; right:200px; width:180px; height: auto;">
+        <img src = 'assets/25 min.png' alt = 'office desk' onclick='startTimer(25)'style="position:absolute; top:215px; right:150px; width:180px; height: auto;">
+        <img src = 'assets/50 min.png' alt = 'office desk' onclick='startTimer(50)'style="position:absolute; top:60px; right:20px; width:170px; height: auto;">
+    </div>
+<div class = 'timer'>
+    25:00
+</div>
+<audio id="alarmSound">
+    <source src="assets/lofi.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<dialog id="timerDialog">
+    <h3>Countdown Timer</h3>
+    <div id="timerDisplay" class="timer-display" style="font-weight: 10px;">00:00</div>
+    <button onclick="closeDialog()">Close</button>
+</dialog>
+
+
+<div id = 'timerDisplay'>
+
+</div>
+<script>
+let countdown; // Store interval
+
+function startTimer(minutes) {
+    clearInterval(countdown); // Clear any existing timer
+
+    let timeInSeconds = minutes * 60;
+    const timerDisplay = document.getElementById('timerDisplay');
+    timerDisplay.style.display = 'block'; // Show timer
+    updateDisplay(timeInSeconds); // Update immediately
+
+    const dialog = document.getElementById('timerDialog');
+    dialog.showModal(); // Open dialog
+
+    countdown = setInterval(() => {
+        timeInSeconds--;
+        updateDisplay(timeInSeconds);
+
+        if (timeInSeconds <= 0) {
+            clearInterval(countdown);
+            timerDisplay.innerHTML = "TIME'S UP!";
+
+            // Play alarm sound when time is up
+            let alarm = document.getElementById("alarmSound");
+            alarm.play();
+
+            // Stop the alarm after 15 seconds
+            setTimeout(() => {
+                alarm.pause();
+                alarm.currentTime = 0; // Reset audio position
+            }, 15000); // 15 seconds
+        }
+    }, 1000);
+}
+
+function updateDisplay(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    document.getElementById('timerDisplay').innerHTML = 
+        `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+}
+
+function closeDialog() {
+    clearInterval(countdown); // Stop timer
+    document.getElementById('timerDialog').close(); // Close dialog
+
+    // Stop the alarm when closing the dialog
+    let alarm = document.getElementById("alarmSound");
+    alarm.pause();
+    alarm.currentTime = 0; // Reset audio position
+}
+
+
+</script>
+
+</body>
+
+
+
+<!-- 
+
+
+ -->
