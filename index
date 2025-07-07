@@ -7,17 +7,17 @@
     <img src = 'assets/office_desk.jpg' alt = 'office desk' style="position:relative">
 
     <div class="image-container">
-        <img src = 'assets/5 min.png' alt = 'office desk' onclick='startTimer(0.1)' style="position:absolute; top:142px; left:180px; width:180px; height: auto;">
-        <img src = 'assets/15 min.png' alt = 'office desk' onclick='startTimer(15)' style="position:absolute; top:250px; left:380px; width:180px; height: auto;">
-        <img src = 'assets/20 min.png' alt = 'office desk' onclick='startTimer(20)'style="position:absolute; top:20px; right:200px; width:180px; height: auto;">
-        <img src = 'assets/25 min.png' alt = 'office desk' onclick='startTimer(25)'style="position:absolute; top:215px; right:150px; width:180px; height: auto;">
-        <img src = 'assets/50 min.png' alt = 'office desk' onclick='startTimer(50)'style="position:absolute; top:60px; right:20px; width:170px; height: auto;">
+        <img src = '5 min.png' alt = 'office desk' onclick='startTimer(0.1)' style="position:absolute; top:142px; left:180px; width:180px; height: auto;">
+        <img src = '15 min.png' alt = 'office desk' onclick='startTimer(15)' style="position:absolute; top:250px; left:380px; width:180px; height: auto;">
+        <img src = '20 min.png' alt = 'office desk' onclick='startTimer(20)'style="position:absolute; top:20px; right:200px; width:180px; height: auto;">
+        <img src = '25 min.png' alt = 'office desk' onclick='startTimer(25)'style="position:absolute; top:215px; right:150px; width:180px; height: auto;">
+        <img src = '50 min.png' alt = 'office desk' onclick='startTimer(50)'style="position:absolute; top:60px; right:20px; width:170px; height: auto;">
     </div>
 <div class = 'timer'>
     25:00
 </div>
 <audio id="alarmSound">
-    <source src="assets/lofi.mp3" type="audio/mpeg">
+    <source src="lofi.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio>
 
